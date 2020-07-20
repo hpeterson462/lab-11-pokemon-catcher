@@ -1,12 +1,19 @@
 // import functions and grab DOM elements
-import from '../rawData';
-import { getRandomPoke } from './';
+import rawData from '../assets/rawData';
+import { getRandomPoke } from './poke-utils.js';
 // initialize state
-let
-// set event listeners to update state and DOM
+let numberOfPokeCaptures = 0;
+let numberOfPokeEncounters = 0;
+let pokeCart = [];
 
-//we need correct pick - doesn't matter which one as long as it hasn't been picked
-//decide correct answer
+// set event listeners to update state and DOM
+const randomPoke1 = getRandomPoke();
+const randomPoke2 = getRandomPoke();
+
+while (randomPoke1.id === randomPoke2.id) {
+
+}
+//generate random Pokemon that hasn't been picked yet
 
 const randomOneOrZero = Math.round(Math.random());
 
