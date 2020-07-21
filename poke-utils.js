@@ -1,10 +1,11 @@
-export function removePokebyId(pokemon, pokeId) {
+export function removePokeById(pokemon, pokeId) {
     if (pokeId === pokemon.id) {
         pokemon.splice(pokeId, 1);
     }
 }
 
-export function getRandomPoke() {
-    const randomPokeId = Math.round(Math.random() * pokemon.length);
-    return pokemon[randomPokeId];
+export function getRandomPoke(pokemonArray) {
+    const randomPokeId = Math.floor(Math.random() * pokemonArray.length);
+
+    return pokemonArray[randomPokeId];
 }
