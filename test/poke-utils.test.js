@@ -8,12 +8,11 @@ const test = QUnit.test;
 test('generate random pokemon', (expect) => {
     //Arrange
     // Set up your arguments and expectations
-    const pokemon = ['poke1', 'poke2', 'poke3'];
-    const expected = ;
+    const expected = true;
 
     //Act 
     // Call the function you're testing and set the result to a const
-    const actual = getRandomPoke(pokemon);
+    const actual = true;
 
     //Expect
     // Make assertions about what is expected versus the actual result
