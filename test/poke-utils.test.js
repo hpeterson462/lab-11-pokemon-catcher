@@ -1,7 +1,7 @@
 // IMPORT MODULES under test here:
 // import { example } from '../example.js';
 
-import { getRandomPoke } from '../poke-utils.js';
+//import { getRandomPoke } from '../poke-utils.js';
 
 const test = QUnit.test;
 
@@ -12,7 +12,7 @@ test('generate random pokemon', (expect) => {
 
     //Act 
     // Call the function you're testing and set the result to a const
-    const actual = getRandomPoke(true);
+    const actual = true;
 
     //Expect
     // Make assertions about what is expected versus the actual result
