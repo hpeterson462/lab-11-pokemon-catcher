@@ -12,7 +12,7 @@ test('generate random pokemon', (expect) => {
 
     //Act 
     // Call the function you're testing and set the result to a const
-    const actual = true;
+    const actual = getRandomPoke(true);
 
     //Expect
     // Make assertions about what is expected versus the actual result
