@@ -4,8 +4,8 @@ export function removePokeById(pokemon, pokeId) {
     }
 }
 
-export function getRandomPoke(pokemonArray) {
-    const randomPokeId = Math.floor(Math.random() * pokemonArray.length);
+export function getRandomPoke(pokemonData) {
+    const randomPokeId = Math.floor(Math.random() * pokemonData.length);
 
-    return pokemonArray[randomPokeId];
+    return pokemonData[randomPokeId];
 }

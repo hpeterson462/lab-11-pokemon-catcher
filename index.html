@@ -18,26 +18,30 @@
         Catch what you can!
     </header>
     <main>
-        <section>
+        <section id='quiz-section'>
             <label>
-                <input name='pokemon1' type="radio">
-                <img id="img1" src="">
-                <p class="description"></p>
+                <span></span>
+                <input name="pokemon" type="radio" value="">
+                <img src="" height="200" width="200">
             </label>
             <label>
-                <input name='pokemon2' type="radio">
-                <img id="img2" src="">
-                <p class="description"></p>
+                <span></span>
+                <input name="pokemon" type="radio" value="">
+                <img src="" height="200" width="200">
             </label>
             <label>
-                <input name='pokemon3' type="radio">
-                <img id="img3" src="">
-                <p class="description"></p>
+                <span></span>
+                <input name="pokemon" type="radio" value="">
+                <img src="" height="200" width="200">
             </label>
+            </div>
         </section>
     </main>
     <footer>
-        <button id='next-catch'>Next Catch!</button>
+        <div id='next-div' class='hidden'>
+            <p id='result'></p>
+            <button id='next-button'>Next Catch!</button>
+        </div>
     </footer>
 
     <script type="module" src="pokemon.js"></script>
