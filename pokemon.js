@@ -2,9 +2,9 @@
 import rawData from '../assets/rawData';
 import { getRandomPoke } from './poke-utils';
 // initialize state
-let numberOfPokeCaptures = 0;
-let numberOfPokeEncounters = 0;
-let pokeCart = [];
+//let numberOfPokeCaptures = 0;
+//let numberOfPokeEncounters = 0;
+//let pokeCart = [];
 let pokemonData = rawData.slice();
 
 // set event listeners to update state and DOM
@@ -27,7 +27,7 @@ const img1 = firstLabel.children[2];
 userInput1.value = randomPoke1.id;
 img1.src = randomPoke1.image;
 
-const secondLabel = labels[1];
+/*const secondLabel = labels[1];
 const userInput2 = secondLabel.children[1];
 input2.addEventListener('click', eventHandler);
 img2.src = randomPoke2.image;
@@ -37,4 +37,4 @@ const userInput3 = thirdLabel.children[1];
 input3.addEventListener('click', eventHandler);
 img3.src = randomPoke3.image;
 
-const pokemonCaught = document.querySelector('input:checked');
+const pokemonCaught = document.querySelector('input:checked');*/
