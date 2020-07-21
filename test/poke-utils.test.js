@@ -1,18 +1,21 @@
 // IMPORT MODULES under test here:
 // import { example } from '../example.js';
 
+import { getRandomPoke } from '../poke-utils.js';
+
 const test = QUnit.test;
 
-test('time to test a function', (expect) => {
+test('generate random pokemon', (expect) => {
     //Arrange
     // Set up your arguments and expectations
-    const expected = true;
-    
+    const pokemon = ['poke1', 'poke2', 'poke3'];
+    const expected = false;
+
     //Act 
     // Call the function you're testing and set the result to a const
-    const actual = false;
+    const actual = getRandomPoke(pokemon);
 
     //Expect
     // Make assertions about what is expected versus the actual result
-    expect.equal(actual, expected);
+    expect.deepEqual(actual, expected);
 });
