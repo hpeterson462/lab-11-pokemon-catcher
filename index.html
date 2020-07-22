@@ -19,19 +19,24 @@
     </header>
     <main>
         <section id='quiz-section'>
+            <div id="pokes-captured">
+                <label>
+                    <span></span>
+                    <input name="pokemon" type="radio" value="0" id="poke1">
+                    <img src="" height="200" width="200">
+                </label>
+            </div>
+            <div id="pokes-captured">
+                <label>
+                    <span></span>
+                    <input name="pokemon" type="radio" value="1" id="poke2">
+                    <img src="" height="200" width="200">
+                </label>
+            </div>
+            <div id="pokes-captured"></div>
             <label>
                 <span></span>
-                <input name="pokemon" type="radio" value="">
-                <img src="" height="200" width="200">
-            </label>
-            <label>
-                <span></span>
-                <input name="pokemon" type="radio" value="">
-                <img src="" height="200" width="200">
-            </label>
-            <label>
-                <span></span>
-                <input name="pokemon" type="radio" value="">
+                <input name="pokemon" type="radio" value="2" id="poke3">
                 <img src="" height="200" width="200">
             </label>
             </div>
@@ -40,7 +45,8 @@
     <footer>
         <div id='next-div' class='hidden'>
             <p id='result'></p>
-            <button id='next-button'>Next Catch!</button>
+            <p id='total-pokes-encountered'></p>
+            <p id='total-pokes-captured'></p>
         </div>
     </footer>
 

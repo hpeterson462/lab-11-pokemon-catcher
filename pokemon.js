@@ -1,19 +1,20 @@
 // import functions and grab DOM elements
 import { rawData } from './assets/rawData.js';
-import { getRandomPoke } from './poke-utils.js';
-// initialize state
-/*const pokeImageTags = document.querySelectorAll('img');
-const pokeRadioTags = document.querySelectorAll('input');
-const pokeName = document.getElementById('pokemon');
-const result = document.getElementById('result');
-const nextDiv = document.getElementById('next-div');
-const userPokeChoice = document.getElementById('user-poke-choice');
-const button = document.querySelector('button');*/
+import {
+    getRandomPoke,
+    pokeChosen,
+    pokeEncountered,
+    findById,
+} from './poke-utils.js';
 
-let numberOfPokeCaptures = 0;
-let numberOfPokeEncounters = 0;
-let pokeCart = [];
+/*const totalPokesEncountered = document.getElementById('total-pokes-encountered');
+const totalPokesCaptured = document.getElementById('total-pokes-captured');*/
+
+// initialize state
+//let numberOfPokeCaptures = 0;
+//let numberOfPokeEncounters = 0;
 const pokemonData = rawData.slice();
+//const totalPokesEncountered = [];
 
 // set event listeners to update state and DOM
 const randomPoke1 = getRandomPoke(pokemonData);
@@ -21,8 +22,9 @@ let randomPoke2 = getRandomPoke(pokemonData);
 let randomPoke3 = getRandomPoke(pokemonData);
 
 //make sure random Pokemon isn't same as others
-while (randomPoke1.id === randomPoke2.id || randomPoke2.id === randomPoke3.id || randomPoke1.id === randomPoke3.id) {
-    getRandomPoke(pokemonData);
+while (randomPoke1.id === randomPoke2.id || randomPoke1.id === randomPoke3.id || randomPoke2.id === randomPoke3.id) {
+    randomPoke2 = getRandomPoke(pokemonData);
+    randomPoke3 = getRandomPoke(pokemonData);
 }
 
 //array of labels
@@ -32,6 +34,7 @@ const labels = document.querySelectorAll('label');
 const firstLabel = labels[0];
 const span1 = firstLabel.children[0];
 const userInput1 = firstLabel.children[1];
+userInput1.addEventListener('click', eventHandler);
 const img1 = firstLabel.children[2];
 
 span1.textContent = randomPoke1.pokemon;
@@ -42,12 +45,11 @@ img1.src = randomPoke1.url_image;
 const secondLabel = labels[1];
 const span2 = secondLabel.children[0];
 const userInput2 = secondLabel.children[1];
-userInput1.addEventListener('click', eventHandler);
+userInput2.addEventListener('click', eventHandler);
 const img2 = secondLabel.children[2];
 
 span2.textContent = randomPoke2.pokemon;
 userInput2.value = randomPoke2.pokemon;
-userInput2.addEventListener('click', eventHandler);
 img2.src = randomPoke2.url_image;
 
 //third label
@@ -64,5 +66,13 @@ img3.src = randomPoke3.url_image;
 const pokemonCaught = document.querySelector('input:checked');
 
 function eventHandler(e) {
-    console.log(e.target.value);
+    //numberOfPokeCaptures++;
+    const userClicked = e.target.value;
+    const pokesCaptured = findById(pokemonData, userClicked);
+    const pokeEncounter = pokeEncountered(userClicked, pokesCaptured);
+    pokeChosen(pokeEncounter, userClicked);
+
+    userInput1.disable = true;
+    userInput2.disable = true;
+    userInput3.disable = true;
 }
