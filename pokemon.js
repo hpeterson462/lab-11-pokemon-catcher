@@ -65,7 +65,7 @@ userInput3.value = randomPoke3.pokemon;
 img3.src = randomPoke3.url_image;
 
 const nextButton = document.getElementById('next-button');
-const pokemonCaught = document.querySelector('input:checked');
+//const pokemonCaught = document.querySelector('input:checked');
 
 function eventHandler(e) {
     //numberOfPokeCaptures++;
