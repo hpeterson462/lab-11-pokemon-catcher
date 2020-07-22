@@ -14,6 +14,7 @@ const totalPokesCaptured = document.getElementById('total-pokes-captured');*/
 //let numberOfPokeCaptures = 0;
 //let numberOfPokeEncounters = 0;
 const pokemonData = rawData.slice();
+//let totalPokesEncountered = [];
 //const totalPokesEncountered = [];
 
 // set event listeners to update state and DOM
@@ -63,10 +64,12 @@ span3.textContent = randomPoke3.pokemon;
 userInput3.value = randomPoke3.pokemon;
 img3.src = randomPoke3.url_image;
 
+const nextButton = document.getElementById('next-button');
 const pokemonCaught = document.querySelector('input:checked');
 
 function eventHandler(e) {
     //numberOfPokeCaptures++;
+
     const userClicked = e.target.value;
     const pokesCaptured = findById(pokemonData, userClicked);
     const pokeEncounter = pokeEncountered(userClicked, pokesCaptured);
@@ -75,4 +78,5 @@ function eventHandler(e) {
     userInput1.disable = true;
     userInput2.disable = true;
     userInput3.disable = true;
+    nextButton.classList.remove('hidden');
 }

@@ -46,16 +46,3 @@ export function findById(pokemonData, id) {
 
     return match;
 }
-
-
-export function findByName(pokemonData, pokemon) {
-    let match = null;
-
-    for (let i = 0; i < pokemonData.length; i++) {
-        if (pokemon === pokemonData[i].name) {
-            match = pokemonData[i];
-        }
-    }
-
-    return match;
-}
