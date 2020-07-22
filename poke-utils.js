@@ -8,7 +8,7 @@ export function pokeChosen(PokeCaptures, id) {
     let pokeCaught = findById(PokeCaptures, id);
 
     if (pokeCaught) {
-        pokeCaught.pokeCaught++;
+        pokeCaught.caught++;
     } else {
         const newCapture = {
             id: id,
@@ -16,11 +16,13 @@ export function pokeChosen(PokeCaptures, id) {
             caught: 1
         };
         PokeCaptures.push(newCapture);
+        console.log(pokeCaptures);
     }
 }
 
-export function pokeEncountered(pokemonEncountered, id) {
 
+export function pokeEncountered(pokemonEncountered, id) {
+    console.log(pokemonEncountered);
     let pokeEncounter = findById(pokemonEncountered, id);
 
     if (pokeEncounter) {

@@ -79,10 +79,10 @@ footer {
     box-shadow: var(--shadow);
 }
  
-.hidden {
+/*.hidden {
     display: none;
 }
 
 .disable {
     opacity: 0.5;
-}
+}*/

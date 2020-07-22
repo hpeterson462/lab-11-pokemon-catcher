@@ -11,10 +11,10 @@ import {
 const totalPokesCaptured = document.getElementById('total-pokes-captured');*/
 
 // initialize state
-//let numberOfPokeCaptures = 0;
+let numberOfPokeCaptures = 0;
 //let numberOfPokeEncounters = 0;
 const pokemonData = rawData.slice();
-//let totalPokesEncountered = [];
+let totalPokesEncountered = [];
 //const totalPokesEncountered = [];
 
 // set event listeners to update state and DOM
@@ -65,18 +65,20 @@ userInput3.value = randomPoke3.pokemon;
 img3.src = randomPoke3.url_image;
 
 const nextButton = document.getElementById('next-button');
-//const pokemonCaught = document.querySelector('input:checked');
+const pokemonCaught = document.querySelector('input:checked');
 
 function eventHandler(e) {
-    //numberOfPokeCaptures++;
+    // numberOfPokeCaptures++;
 
     const userClicked = e.target.value;
+    console.log(userClicked);
     const pokesCaptured = findById(pokemonData, userClicked);
-    const pokeEncounter = pokeEncountered(userClicked, pokesCaptured);
-    pokeChosen(pokeEncounter, userClicked);
+    const pokeEncounter = pokeEncountered(totalPokesEncountered, userClicked);
+    pokeChosen(totalPokesEncountered, userClicked);
 
     userInput1.disable = true;
     userInput2.disable = true;
     userInput3.disable = true;
     nextButton.classList.remove('hidden');
+    console.log(totalPokesEncountered);
 }
