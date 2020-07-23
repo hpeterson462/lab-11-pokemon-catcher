@@ -5,19 +5,24 @@ import {
     pokeChosen,
     pokeEncountered,
     findById,
+    clearTempStorage,
+    getPokemonStats
 } from './poke-utils.js';
 
-/*const totalPokesEncountered = document.getElementById('total-pokes-encountered');
-const totalPokesCaptured = document.getElementById('total-pokes-captured');*/
-
 // initialize state
-let numberOfPokeCaptures = 0;
-let numberOfPokeEncounters = 0;
+let numberOfPokeCaptures = 1;
+let numberOfPokeEncounters = 1;
 const pokemonData = rawData.slice();
 let totalPokesEncountered = [];
+//let trioRadioButtons = document.querySelectorAll('radio');
 
 function setPage() {
-    console.log('hello');
+    if (numberOfPokeCaptures === 10) {
+        window.location = './results/index.html';
+
+
+        //clearTempStorage();
+    }
     // set event listeners to update state and DOM
     const randomPoke1 = getRandomPoke(pokemonData);
     let randomPoke2 = getRandomPoke(pokemonData);
@@ -28,7 +33,7 @@ function setPage() {
         randomPoke2 = getRandomPoke(pokemonData);
         randomPoke3 = getRandomPoke(pokemonData);
     }
-    console.log(randomPoke1);
+
     //array of labels
     const labels = document.querySelectorAll('label');
 
@@ -67,29 +72,26 @@ function setPage() {
 }
 
 const nextButton = document.getElementById('next-button');
-const pokemonCaught = document.querySelectorAll('input');
 
 function eventHandler(e) {
-
     const userClicked = e.target.value;
-    console.log(userClicked);
+
     const pokeCaught = findById(pokemonData, userClicked);
     const pokeEncounter = pokeEncountered(totalPokesEncountered, userClicked);
     pokeChosen(totalPokesEncountered, userClicked);
 
-    console.log(totalPokesEncountered);
-
-    const totalPokesEnc = document.getElementById('total-pokes-encountered');
-    const totalPokesCapt = document.getElementById('total-pokes-captured');
-    totalPokesEnc.textContent = numberOfPokeEncounters++;
-    totalPokesCapt.textContent = numberOfPokeCaptures++;
-
     nextButton.classList.remove('hidden');
+
+    getPokemonStats();
 
 }
 setPage();
 
 nextButton.addEventListener('click', () => {
+    const totalPokesEnc = document.getElementById('total-pokes-encountered');
+    const totalPokesCapt = document.getElementById('total-pokes-captured');
+    totalPokesEnc.textContent = numberOfPokeEncounters++;
+    totalPokesCapt.textContent = numberOfPokeCaptures++;
 
     setPage();
 });

@@ -1,3 +1,5 @@
+import { pokeStats } from './assets/pokestats.js';
+
 export function getRandomPoke(pokemonData) {
     const randomPokeId = Math.floor(Math.random() * pokemonData.length);
 
@@ -16,13 +18,11 @@ export function pokeChosen(PokeCaptures, id) {
             caught: 1
         };
         PokeCaptures.push(newCapture);
-        console.log(pokeCaptures);
     }
 }
 
 
 export function pokeEncountered(pokemonEncountered, id) {
-    console.log(pokemonEncountered);
     let pokeEncounter = findById(pokemonEncountered, id);
 
     if (pokeEncounter) {
@@ -47,4 +47,17 @@ export function findById(pokemonData, id) {
     }
 
     return match;
+}
+
+export function clearTempStorage(tempStorage) {
+    localStorage.clear(tempStorage);
+}
+
+export function getPokemonStats() {
+    let currentPokemonStats = JSON.parse(localStorage.getItem('POKE STATS'));
+
+    if (!currentPokemonStats) {
+        localStorage.setItem('POKE STATS', JSON.stringify(pokeStats));
+    }
+    return currentPokemonStats;
 }
