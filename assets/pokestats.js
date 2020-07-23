@@ -76,4 +76,4 @@ export const pokeStats = [
         pokemon: 'pidgey',
     }
 
-]
+];
