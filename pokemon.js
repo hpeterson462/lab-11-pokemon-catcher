@@ -19,9 +19,6 @@ let totalPokesEncountered = [];
 function setPage() {
     if (numberOfPokeCaptures === 10) {
         window.location = './results/index.html';
-
-
-        //clearTempStorage();
     }
     // set event listeners to update state and DOM
     const randomPoke1 = getRandomPoke(pokemonData);
@@ -84,7 +81,12 @@ function eventHandler(e) {
 
     getPokemonStats();
 
+    if (pokeCaught) {
+        localStorage.setItem('POKE COUNTER', JSON.stringify(pokeEncounter));
+    }
 }
+clearTempStorage();
+
 setPage();
 
 nextButton.addEventListener('click', () => {

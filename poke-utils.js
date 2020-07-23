@@ -61,3 +61,4 @@ export function getPokemonStats() {
     }
     return currentPokemonStats;
 }
+
