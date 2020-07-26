@@ -2,11 +2,9 @@
 import { rawData } from './assets/rawData.js';
 import {
     getRandomPoke,
-    pokeChosen,
-    pokeEncountered,
     findById,
     clearTempStorage,
-    getPokemonStats
+    getCart
 } from './poke-utils.js';
 import { pokeStats } from './assets/pokestats.js';
 
@@ -14,8 +12,6 @@ import { pokeStats } from './assets/pokestats.js';
 let numberOfPokeCaptures = 1;
 let numberOfPokeEncounters = 1;
 const pokemonData = rawData.slice();
-let newCapture = [];
-let totalPokesEncountered = [];
 let trioRadioButtons = document.querySelectorAll('radio');
 
 function setPage() {
@@ -75,30 +71,25 @@ const nextButton = document.getElementById('next-button');
 function eventHandler(e) {
 
     const userClicked = e.target.value;
-    const pickedPokemon = userClicked.value;
-    const pokeResults = findById(pokemonData, Number(pickedPokemon));
-
-
-    //const pokeCaught = pokeChosen(pokemonData, userClicked);
-
-    //const pokeEncounter = pokeEncountered(totalPokesEncountered, userClicked);
-
-    //pokeChosen(totalPokesEncountered, userClicked);
-
 
     nextButton.classList.remove('hidden');
 
-    //pokeChosen(pokeEncountered, pickedPokemon);
-
-
-    const stringyCart = JSON.stringify(numberOfPokeCaptures);
-    localStorage.setItem('POKE STATS', stringyCart);
-
-
-
-    /*const stringyCart2 = JSON.stringify(newEncounter);
-    localStorage.setItem('ENCOUNTERED', stringyCart2);*/
+    const cart = getCart();
+    const pokeInCart = findById(rawData.id, Number(userClicked));
+    console.log(cart);
+    if (pokeInCart) {
+        pokeInCart.quantity++;
+    } else {
+        const newPokemon = {
+            id: pokeStats.id,
+            quantity: 1
+        };
+        cart.push(newPokemon);
+    }
+    const stringyCart = JSON.stringify(cart);
+    localStorage.setItem('CART', stringyCart);
 }
+//}
 
 clearTempStorage();
 

@@ -1,48 +1,15 @@
-import { pokeStats } from './assets/pokestats.js';
+export function getRandomPoke(rawData) {
+    const randomPokeId = Math.floor(Math.random() * rawData.length);
 
-export function getRandomPoke(pokemonData) {
-    const randomPokeId = Math.floor(Math.random() * pokemonData.length);
-
-    return pokemonData[randomPokeId];
+    return rawData[randomPokeId];
 }
 
-export function pokeChosen(pokeCaptures, id) {
-    let pokeCaught = findById(pokeCaptures, id);
-
-    if (pokeCaught) {
-        pokeCaught.caught++;
-    } else {
-        const newCapture = {
-            id: id,
-            encounters: 1,
-            caught: 1
-        };
-        pokeCaptures.push(newCapture);
-    }
-}
-
-
-export function pokeEncountered(pokemonEncountered, id) {
-    let pokeEncounter = findById(pokemonEncountered, id);
-
-    if (pokeEncounter) {
-        pokeEncounter.numberOfPokeEncounters++;
-    } else {
-        const newEncounter = {
-            id: id,
-            encounters: 1,
-            caught: 0
-        };
-        pokemonEncountered.push(newEncounter);
-    }
-}
-
-export function findById(pokemonData, id) {
+export function findById(id, rawData) {
     let match = null;
 
-    for (let i = 0; i < pokemonData.length; i++) {
-        if (id === pokemonData[i].id) {
-            match = pokemonData[i];
+    for (let i = 0; i < rawData.length; i++) {
+        if (id === rawData[i].id) {
+            match = rawData[i];
         }
     }
     return match;
@@ -52,12 +19,19 @@ export function clearTempStorage(tempStorage) {
     localStorage.clear(tempStorage);
 }
 
-export function getPokemonStats() {
-    let currentPokemonStats = JSON.parse(localStorage.getItem('POKE STATS'));
-
-    if (!currentPokemonStats) {
-        localStorage.setItem('POKE STATS', JSON.stringify(pokeStats));
-    }
-    return currentPokemonStats;
+export function getCart() {
+    const rawCart = localStorage.getItem('CART');
+    let cart = JSON.parse(rawCart) || []
+        ;
+    return cart;
 }
 
+export function mungeCaptured(pokemonArray) {
+    const captures = [];
+    for (let i = 0; i < pokemonArray.length; i++) {
+        const pokemon = pokemonArray[i];
+
+        captures.push(pokemon.captured);
+    }
+    return captures;
+}
