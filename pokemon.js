@@ -74,14 +74,16 @@ function eventHandler(e) {
     nextButton.classList.remove('hidden');
 
     const cart = getCart();
-    const pokeInCart = findById(rawData.id, Number(userClicked));
+    const pokeInCart = findById(pokemonData.id, Number(userClicked));
 
     if (pokeInCart) {
         pokeInCart.quantity++;
     } else {
         const newPokemon = {
-            id: pokeStats.id,
-            quantity: 1
+            id: userClicked.id,
+            name: pokemonData.pokemon,
+            quantity: 1,
+            encounters: 1
         };
         cart.push(newPokemon);
     }

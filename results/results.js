@@ -1,5 +1,4 @@
 /*eslint-disable*/
-
 import { mungeCaptured, mungeNames } from '../poke-utils.js';
 
 const showPokemonsCollected = document.getElementById('collected-pokes');
