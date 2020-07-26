@@ -35,3 +35,13 @@ export function mungeCaptured(pokemonArray) {
     }
     return captures;
 }
+
+export function mungeNames(pokemonArray) {
+    const names = [];
+    for (let i = 0; i < pokemonArray.length; i++) {
+        const pokemon = pokemonArray[i];
+
+        names.push(pokemon.pokemon);
+    }
+    return names;
+}
