@@ -6,8 +6,8 @@ export function getRandomPoke(pokemonData) {
     return pokemonData[randomPokeId];
 }
 
-export function pokeChosen(PokeCaptures, id) {
-    let pokeCaught = findById(PokeCaptures, id);
+export function pokeChosen(pokeCaptures, id) {
+    let pokeCaught = findById(pokeCaptures, id);
 
     if (pokeCaught) {
         pokeCaught.caught++;
@@ -17,7 +17,7 @@ export function pokeChosen(PokeCaptures, id) {
             encounters: 1,
             caught: 1
         };
-        PokeCaptures.push(newCapture);
+        pokeCaptures.push(newCapture);
     }
 }
 
@@ -45,7 +45,6 @@ export function findById(pokemonData, id) {
             match = pokemonData[i];
         }
     }
-
     return match;
 }
 

@@ -8,16 +8,18 @@ import {
     clearTempStorage,
     getPokemonStats
 } from './poke-utils.js';
+import { pokeStats } from './assets/pokestats.js';
 
 // initialize state
 let numberOfPokeCaptures = 1;
 let numberOfPokeEncounters = 1;
 const pokemonData = rawData.slice();
+let newCapture = [];
 let totalPokesEncountered = [];
-//let trioRadioButtons = document.querySelectorAll('radio');
+let trioRadioButtons = document.querySelectorAll('radio');
 
 function setPage() {
-    if (numberOfPokeCaptures === 10) {
+    if (numberOfPokeCaptures === 11) {
         window.location = './results/index.html';
     }
     // set event listeners to update state and DOM
@@ -71,20 +73,33 @@ function setPage() {
 const nextButton = document.getElementById('next-button');
 
 function eventHandler(e) {
-    const userClicked = e.target.value;
 
-    const pokeCaught = findById(pokemonData, userClicked);
-    const pokeEncounter = pokeEncountered(totalPokesEncountered, userClicked);
-    pokeChosen(totalPokesEncountered, userClicked);
+    const userClicked = e.target.value;
+    const pickedPokemon = userClicked.value;
+    const pokeResults = findById(pokemonData, Number(pickedPokemon));
+
+
+    //const pokeCaught = pokeChosen(pokemonData, userClicked);
+
+    //const pokeEncounter = pokeEncountered(totalPokesEncountered, userClicked);
+
+    //pokeChosen(totalPokesEncountered, userClicked);
+
 
     nextButton.classList.remove('hidden');
 
-    getPokemonStats();
+    //pokeChosen(pokeEncountered, pickedPokemon);
 
-    if (pokeCaught) {
-        localStorage.setItem('POKE COUNTER', JSON.stringify(pokeEncounter));
-    }
+
+    const stringyCart = JSON.stringify(numberOfPokeCaptures);
+    localStorage.setItem('POKE STATS', stringyCart);
+
+
+
+    /*const stringyCart2 = JSON.stringify(newEncounter);
+    localStorage.setItem('ENCOUNTERED', stringyCart2);*/
 }
+
 clearTempStorage();
 
 setPage();
@@ -94,6 +109,8 @@ nextButton.addEventListener('click', () => {
     const totalPokesCapt = document.getElementById('total-pokes-captured');
     totalPokesEnc.textContent = numberOfPokeEncounters++;
     totalPokesCapt.textContent = numberOfPokeCaptures++;
+
+
 
     setPage();
 });
