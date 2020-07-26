@@ -12,7 +12,6 @@ import { pokeStats } from './assets/pokestats.js';
 let numberOfPokeCaptures = 1;
 let numberOfPokeEncounters = 1;
 const pokemonData = rawData.slice();
-let trioRadioButtons = document.querySelectorAll('radio');
 
 function setPage() {
     if (numberOfPokeCaptures === 11) {
@@ -76,7 +75,7 @@ function eventHandler(e) {
 
     const cart = getCart();
     const pokeInCart = findById(rawData.id, Number(userClicked));
-    console.log(cart);
+
     if (pokeInCart) {
         pokeInCart.quantity++;
     } else {
