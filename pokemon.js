@@ -6,7 +6,6 @@ import {
     clearTempStorage,
     getCart
 } from './poke-utils.js';
-import { pokeStats } from './assets/pokestats.js';
 
 // initialize state
 let numberOfPokeCaptures = 1;
